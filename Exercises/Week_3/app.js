@@ -1,8 +1,4 @@
-var main = function() {
-    "use stricy";
-    window.alert("hello world!");
-
-    
-};
-
-$(document).ready(main);
+$(".comment-input button").on("click", function () {
+var $newP = $("<p>New Element</p>");
+$(".comments").append($newP);    
+});
