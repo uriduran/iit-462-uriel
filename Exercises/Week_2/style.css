@@ -1,0 +1,61 @@
+body {
+    background-color: yellow;
+}
+
+header, main, footer {
+    min-width: 855px;
+    margin: auto;
+    padding: 15px;
+}
+
+header, main {
+    background-color: white;
+    overflow: auto;
+}
+
+header h1 {
+    float: left;
+
+}
+header nav {
+    float: right;
+}
+
+.sitemap {
+    float: right;
+    margin-top: 10px;
+}
+
+.contact {
+    float: left;
+    margin-top: 10px;
+}
+
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+h1 {
+font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}   
+
+h5 {
+    font-size: 13.28px;
+} 
+
+img{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
