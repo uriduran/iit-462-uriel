@@ -1,11 +1,12 @@
 $(".comment-input button").on("click", function () { //on click of button do this
-var $new_comment = $("<p>"); //paragraph tags
 
-var comment_text = $(".comment-input input").val(); //takes in the input text
+var $comment_text = $(".comment-input input");
 
-$new_comment.text(comment_text); //adds the input text to the tag
-
-$(".comments").append($new_comment); //adds it all to the .comments selector
-
+if ($comment_text.val() !== "") {
+    var $new_comment = $("<p>"); //paragraph tags
+    $new_comment.text($comment_text.val()); //adds the input text to the tag
+    $(".comments").append($new_comment); //adds it all to the .comments selector  
+    $comment_text.val(""); //value in input is cleared out. 
+}
 });
 
