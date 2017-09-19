@@ -1,8 +1,8 @@
 //init empty array
 var hand = [
     {"rank": "two", "suit":"hearts"},
-    {"rank": "two", "suit":"spades"},
-    {"rank": "two", "suit":"diamonds"},
+    {"rank": "four", "suit":"spades"},
+    {"rank": "five", "suit":"diamonds"},
     {"rank": "king", "suit":"clubs"},
     {"rank": "seven", "suit":"diamonds"}
 
@@ -11,19 +11,16 @@ var hand = [
 //ALL POSSIBLE RANKS
 
 var ranks = ["two", "three", "four", "five", "seven","eight","nine","ten","jack","queen","king","ace"];
-
 var twoPair = false;
 var threeKind = false;
 
-
+//Function to check how many times each rank appears and returns that value.
 function containsNTimes(handR, ranks) {
         var count = handR.reduce(function(n, val) {
             return n + (val === ranks);
         }, 0);
-        
         return count;
     };
-
 
 var handRanks;
 //stores all of the ranks in var handRanks
@@ -34,7 +31,7 @@ handRanks = hand.map(function (card) {
 
 //TWOPAIR-------------------------------------------------------
 ranks.forEach(function (rank){
-    if (containsNTimes(handRanks, rank) <= 2){
+    if (containsNTimes(handRanks, rank) >= 2){
         twoPair = true;
     }
     if(twoPair == true){
@@ -52,3 +49,12 @@ ranks.forEach(function (rank){
         console.log("Three of a kind!");
     };
 });
+
+
+
+
+
+//BUST
+if(twoPair != true && threeKind != true){
+    console.log("Bust");
+};
