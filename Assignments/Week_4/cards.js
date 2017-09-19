@@ -1,10 +1,10 @@
 //init empty array
 var hand = [
     {"rank": "two", "suit":"diamonds"},
-    {"rank": "two", "suit":"diamonds"},
-    {"rank": "two", "suit":"diamonds"},
+    {"rank": "three", "suit":"diamonds"},
+    {"rank": "four", "suit":"diamonds"},
     {"rank": "king", "suit":"diamonds"},
-    {"rank": "seven", "suit":"diamonds"}
+    {"rank": "queen", "suit":"diamonds"}
 
 ];
 
@@ -15,6 +15,7 @@ var suits = ["hearts","diamonds","clubs","spades"];
 var twoPair = false;
 var threeKind = false;
 var flush = false;
+var fourKind = false;
 
 //Function to check how many times each rank appears and returns that value.
 function containsNTimes(handR, ranks) {
@@ -58,9 +59,9 @@ ranks.forEach(function (rank){
 //FOUR OF A KIND----------------------------------------------------
 ranks.forEach(function (rank){
     if (containsNTimes(handRanks, rank) >= 4){
-        threeKind = true;
+        fourKind = true;
     }
-    if(threeKind == true){
+    if(fourKind == true){
         console.log("Four of a kind!");
     };
 });
@@ -76,21 +77,9 @@ suits.forEach(function (suit){
 });
 
 
-
-
-
-
-//FULLHOUSE
-ranks.forEach(function (rank){
-    if (containsNTimes(handRanks, rank) == 5){
-        threeKind = true;
-        var index = handRanks.indexOf(rank);
-        console.log(index + rank);
-    }
-
-});
-
 //BUST
-if(twoPair != true){
+if(twoPair != true && flush !=true){
     console.log("Bust");
 };
+
+
