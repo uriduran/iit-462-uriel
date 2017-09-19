@@ -1,9 +1,9 @@
 //init empty array
 var hand = [
-    {"rank": "two", "suit":"hearts"},
-    {"rank": "four", "suit":"spades"},
-    {"rank": "five", "suit":"diamonds"},
-    {"rank": "king", "suit":"clubs"},
+    {"rank": "two", "suit":"diamonds"},
+    {"rank": "two", "suit":"diamonds"},
+    {"rank": "two", "suit":"diamonds"},
+    {"rank": "king", "suit":"diamonds"},
     {"rank": "seven", "suit":"diamonds"}
 
 ];
@@ -11,8 +11,10 @@ var hand = [
 //ALL POSSIBLE RANKS
 
 var ranks = ["two", "three", "four", "five", "seven","eight","nine","ten","jack","queen","king","ace"];
+var suits = ["hearts","diamonds","clubs","spades"];
 var twoPair = false;
 var threeKind = false;
+var flush = false;
 
 //Function to check how many times each rank appears and returns that value.
 function containsNTimes(handR, ranks) {
@@ -27,7 +29,11 @@ var handRanks;
 handRanks = hand.map(function (card) {
     return card.rank;
 });
-
+var handSuits;
+//stores all of the ranks in var handRanks
+handSuits = hand.map(function (card) {
+    return card.suit;
+});
 
 //TWOPAIR-------------------------------------------------------
 ranks.forEach(function (rank){
@@ -40,9 +46,8 @@ ranks.forEach(function (rank){
 });
 
 //THREE OF A KIND-------------------------------------------------------
-
 ranks.forEach(function (rank){
-    if (containsNTimes(handRanks, rank) == 3){
+    if (containsNTimes(handRanks, rank) >= 3){
         threeKind = true;
     }
     if(threeKind == true){
@@ -50,11 +55,42 @@ ranks.forEach(function (rank){
     };
 });
 
+//FOUR OF A KIND----------------------------------------------------
+ranks.forEach(function (rank){
+    if (containsNTimes(handRanks, rank) >= 4){
+        threeKind = true;
+    }
+    if(threeKind == true){
+        console.log("Four of a kind!");
+    };
+});
+
+//FLUSH---------------------------------------------------------------
+suits.forEach(function (suit){
+    if (containsNTimes(handSuits, suit) == 5){
+        flush = true;
+    }
+    if(flush == true){
+        console.log("Flush!");
+    };
+});
 
 
 
+
+
+
+//FULLHOUSE
+ranks.forEach(function (rank){
+    if (containsNTimes(handRanks, rank) == 5){
+        threeKind = true;
+        var index = handRanks.indexOf(rank);
+        console.log(index + rank);
+    }
+
+});
 
 //BUST
-if(twoPair != true && threeKind != true){
+if(twoPair != true){
     console.log("Bust");
 };
