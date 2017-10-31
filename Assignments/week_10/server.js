@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
   res.end("Reminder App!")
 });
 
-
+//POST NEW USERS
 var users = []; //init users array
 //Create a new user
 app.post('/users', function (req, res){
@@ -32,21 +32,20 @@ app.post('/users', function (req, res){
 
 })
 
+//POST REMINDERS
 app.post('/users/:userId/reminders', function (req, res) {
   var inputUserId = req.params.userId; //take in user id from post
   var location = inputUserId - 1; //takes user ID and subtracts one for location in array
   var date = new Date(); //take js date into variable
 
-
-
   if(!users[location]){//if user not found in users array
     res.status(404);
     res.json({"message" : "userId not found: " + inputUserId});
   }else{
-    var id = {"id" : users[location].reminders.length + 1};
+    var id = {"id" : users[location].reminder.length + 1};
     var newRem = req.body; //take in body msg
     newRem.reminder.created = date;
-    users[location].reminders.push(newRem);
+    users[location].reminder.push(newRem);
     res.status(200); //succesful
     res.json(id);
   }
