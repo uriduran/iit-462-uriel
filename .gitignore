@@ -2,3 +2,5 @@
 *.zip
 
 Assignments/week_10/node_modules/*
+
+Assignments/week_10/package-lock\.json
