@@ -4,9 +4,6 @@
   "private": true,
   "description": "App to add reminders.",
   "main": "server.js",
-  "scripts": {
-    "start": ""
-  },
   "dependencies": {
     "body-parser": "~1.18.2",
     "express": "~4.15.5"
