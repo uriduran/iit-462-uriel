@@ -4,9 +4,13 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-const http = require('http');
-http.createServer(function (req, res) {
-  console.log(`${req.method} ${req.url}`);
-  res.end('hello world!');
-}).listen(3000);
-console.log('Server listening on port 3000');
+//initialize server
+app.listen(3000, function () {
+  console.log('Reminder app listening on port 3000')
+});
+
+//testing server works
+app.get('/', function (req, res) {
+  console.log("Reminder App");
+  res.end("Reminder App!")
+});
