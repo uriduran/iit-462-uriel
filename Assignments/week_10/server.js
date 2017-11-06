@@ -139,7 +139,8 @@ app.delete('/users/:userId/reminders', function (req, res) {
     res.json({"message" : "userId not found: " + inID})
   }
   else {
-    users[uLocation].reminders = [ ];//empty the users "sub array"
+    users[uLocation].rems = [ ];//empty the users "sub array"
+    res.status(204);
     res.send("204 No Content");
   }
 });
