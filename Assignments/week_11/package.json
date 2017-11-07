@@ -1,7 +1,6 @@
 {
   "name": "week-10",
   "version": "1.0.0",
-  "private": true,
   "description": "App to add reminders.",
   "main": "server.js",
   "dependencies": {
