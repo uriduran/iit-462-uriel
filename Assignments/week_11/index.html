@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>Reminders App</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -21,6 +21,9 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+
+
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -33,14 +36,145 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-      <div class="one-half column" style="margin-top: 25%">
-        <h4>Basic Page</h4>
-        <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+      <div class="main" style="margin-top: 15%">
+      <header>
+        <h1>Reminder App</h1>
+        <h4>Manage Users and Reminders.</h4>
+      </header>
+
+  <main>
+      <div class="tab">
+          <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'Add')">Add</button>
+          <button class="tablinks" onclick="openCity(event, 'Remove')">Remove</button>
+          <button class="tablinks" onclick="openCity(event, 'Search')">Search</button>
+          <button class="tablinks" onclick="openCity(event, 'View')">View</button>
+        </div>
+
+    <div id="Add" class="tabcontent">
+      <!--ADD USER-->
+      <div  id="adduser">
+        <h5>Add a New User: </h5>
+        <label for="name">Name: </label>
+          <input type="text" placeholder="Uriel" class="addname input" />
+        <label for="email">Email: </label>
+          <input type="text" placeholder="uduran@hawk.iit.edu" class="addemail input" /><br>
+        <button>Add User</button>
+        </div>
+      <!--ADD REMINDER-->
+        <div role="tabpanel" id="addreminder">
+          <h5>Add Reminder: </h5>
+          <label>Title:
+            </label><input type="text" placeholder="Go to the Store" class="addtitle input" />
+          <label>Description: 
+            </label><input type="text" placeholder="Pick up apple, oranges and bears, oh my." class="adddes input"/>
+          <label>UserID: </label>
+            <input type="text" placeholder="5" class="userid input"/><br>
+          <button>Add Reminder</button>
+        </div>
+    </div>
+
+      <!--DELETE USER-->
+    <div id="Remove" class="tabcontent">
+        <div id="deleteuser">
+            <h5>Delete User: </h5>
+              <label>UserID:</label>
+              <input type="text" placeholder="1" class="deluserid input" /><br>
+              <button>Delete</button>
+        </div>
+
+        <div id="deletereminder">
+          <h5>Delete Reminder: </h5>
+            <label>UserID</label>
+            <input type="text" placeholder="1" class="deluser input" />
+            <label>Reminder ID:</label>
+            <input type="text" placeholder="2" class="delremid input" /><br>
+            <button>Delete</button>
+          </div>
+
+          <div id="deleteall">
+            <h5>Delete All Reminders: </h5>
+              <label>User ID:</label>
+              <input type="text" placeholder="1" class="delall input" /><br>
+              <button>Delete All</button>
+          </div>
+    </div>
+
+    <div id="Search" class="tabcontent">
+        <div id="searchuser">
+          <h5>Search User:</h5>
+            <label>User ID: </label>
+              <input type="text" placeholder="12" class="searchuser input"/><br>
+            <button>Search</button>
+        </div>
+
+        <div id="searchreminder">
+          <h5>Search Reminder</h5>
+            <label>UserID:</label>
+            <input type="text" placeholder="1" class="search input" />
+            <label>Reminder ID:</label>
+            <input type="text" placeholder="2" class="searchrem input" /><br>
+            <button>Search</button>
+          </div>
+      </div>
+
+      <div id="View" class="tabcontent">
+      <div role="tabpanel" class="tab-pane" id="viewreminders">
+        <h5>View Reminders: </h5>
+          <label>User ID:
+            </label><input type="text" placeholder="12" class="viewreminder input"/>
+          <button>View Reminders</button>
+        </div>
+        </div>
+        
+        
+
+
+
+    
+
+      
+      
+
+
+    </div>
+    <div class="output"></div>
+  </main>
+
+
+        
       </div>
     </div>
   </div>
 
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- <script src="server.js"></script> -->
+  <script src="app.js"></script>
+
+  <script>
+      function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+      }
+      
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+      </script>
+
 </body>
 </html>
